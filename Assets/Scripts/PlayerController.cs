@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float Speed;
     public float JumpSpeed;
     public float JumpDuration;
+    public int MaxJumps;
     
 
     private Animator animator;
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
         Look(horizontalAxis);
 
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Jump") && jumpCount < MaxJumps) {
             jumpTimer = JumpDuration;
             jumpCount += 1;
         }

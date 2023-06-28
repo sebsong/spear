@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1865334926970011570}
   - component: {fileID: 4291281559850622627}
   - component: {fileID: -6289015893702122821}
+  - component: {fileID: 2088409601491376353}
+  - component: {fileID: 8503931001802996541}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -32,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1865334926970011570
 SpriteRenderer:
@@ -75,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7e6ed5a31c64e42ca819e96ff303afef, type: 3}
+  m_Sprite: {fileID: -244555749, guid: ee062bd7f59ea4b92a17137bfc6a0b1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.23, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -118,8 +120,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.32, y: 0.32}
+  m_Offset: {x: -0.0049415827, y: -0.019766271}
+  m_Size: {x: 0.28046745, y: 0.32}
   m_Direction: 0
 --- !u!50 &-6289015893702122821
 Rigidbody2D:
@@ -131,7 +133,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 7944717559078669188}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -146,5 +148,43 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2088409601491376353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944717559078669188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1f6dd086a5545339637e38750f589f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GravityForce: 3
+  Speed: 3
+  JumpSpeed: 4
+  JumpDuration: 0.3
+  MaxJumps: 2
+--- !u!95 &8503931001802996541
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944717559078669188}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e3f29ee95e0349d3bdab2aaecdab3e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
