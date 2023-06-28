@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
     public float JumpDuration;
     
 
+    private Animator animator;
     private bool isAirborne;
     private float jumpTimer;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         isAirborne = true;
         jumpTimer = 0f;
     }
@@ -23,28 +25,41 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal_translation = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
+        float horizontal_axis = Input.GetAxis("Horizontal");
+        float horizontal_translation = horizontal_axis * Speed * Time.deltaTime;
+        animator.SetBool("Running", horizontal_axis != 0 && !isAirborne);
+        animator.SetBool("Idle", horizontal_axis == 0 && !isAirborne);
 
+        if (horizontal_translation > 0) {
+            // Look Right
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        } else if (horizontal_translation < 0) {
+            // Look Left
+            Vector3 scale = transform.localScale;
+            scale.x = -Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
 
         if (Input.GetButtonDown("Jump")) {
             jumpTimer = JumpDuration;
         }
         
         float vertical_translation = 0f;
-        if (jumpTimer > 0) {
+        bool isJumping = jumpTimer > 0;
+        if (isJumping) {
             vertical_translation = JumpSpeed * Time.deltaTime;
             jumpTimer -= Time.deltaTime;
         } else if (isAirborne) {
             // Apply Gravity
-            // transform.position += Vector3.down * GravityForce * Time.deltaTime;
             vertical_translation = -GravityForce * Time.deltaTime;
         }
 
+        animator.SetBool("Jumping", vertical_translation > 0 && isAirborne);
+        animator.SetBool("Falling", vertical_translation < 0 && isAirborne);
 
         transform.Translate(horizontal_translation, vertical_translation, 0);
-
-        Debug.Log(isAirborne);
-        
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

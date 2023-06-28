@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 87c5d819aa4a4470da5a1ef2a5ad43a1
+guid: ee062bd7f59ea4b92a17137bfc6a0b1a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run (32x32)_0
+      name: Idle (32x32) 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fea71e6b1c112496c92bef889c94c1a8
-      internalID: 1724389863
+      spriteID: e9f4eba4afb4d4c108f977417cfee6fc
+      internalID: -244555749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_1
+      name: Idle (32x32) 1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d6dfb7369ecb4636ab19da326ef39a2
-      internalID: 301925138
+      spriteID: 5ccc2db507aa74261842524d620db026
+      internalID: -194318038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_2
+      name: Idle (32x32) 1_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 230840a3385884029ab878ee52ee30ea
-      internalID: -1438295415
+      spriteID: 16ee05dc796f748dda2ebf1031c192d4
+      internalID: -1015666944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_3
+      name: Idle (32x32) 1_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01c5f5740a2384d76ae1cb6cb24355c3
-      internalID: -580884683
+      spriteID: b21b75210ca474def92d04a46955b5f1
+      internalID: 906687258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_4
+      name: Idle (32x32) 1_4
       rect:
         serializedVersion: 2
         x: 128
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6d3ee134cdbd4bff93575545f880589
-      internalID: 383082052
+      spriteID: 7ece36e571fa8481aad1a551235b9deb
+      internalID: -165089876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_5
+      name: Idle (32x32) 1_5
       rect:
         serializedVersion: 2
         x: 160
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b26f93a007644d3b8792639895e3cf6
-      internalID: -1655078547
+      spriteID: 0d5f0baf855954d37a2c0b5da2ca0ef3
+      internalID: -1577998359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_6
+      name: Idle (32x32) 1_6
       rect:
         serializedVersion: 2
         x: 192
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c23cc6e0811a4c78b60355f5c7cdaec
-      internalID: 1415587315
+      spriteID: dc251ea997bdd48a7a9510df4216a8a9
+      internalID: 2069522479
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_7
+      name: Idle (32x32) 1_7
       rect:
         serializedVersion: 2
         x: 224
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00a7eb054633149e6a8bf309015dd36b
-      internalID: 406499610
+      spriteID: 5afe73bdbf9ec42c0a05a2491386f301
+      internalID: 1409194619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_8
+      name: Idle (32x32) 1_8
       rect:
         serializedVersion: 2
         x: 256
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38a680449fb0d41ba8e94a4e960c8f75
-      internalID: -860818379
+      spriteID: 23e268cb1168f4702bb4ababb63b1ff8
+      internalID: 148271842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_9
+      name: Idle (32x32) 1_9
       rect:
         serializedVersion: 2
         x: 288
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4b1d0fe168ea4ef99d049064da8c660
-      internalID: -819499298
+      spriteID: 70630d4eb67c34829b806f51cb517f1e
+      internalID: -285964919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_10
+      name: Idle (32x32) 1_10
       rect:
         serializedVersion: 2
         x: 320
@@ -334,29 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3206dff4328fe49e8a7a7abd450f1868
-      internalID: 1566618072
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run (32x32)_11
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 57dd7a2df36cb45dd88f4a6b7ab2114b
-      internalID: 134642968
+      spriteID: 60aa446d7b6a44e2990b592a8407f6f3
+      internalID: 1712026308
       vertices: []
       indices: 
       edges: []
@@ -372,18 +351,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Run (32x32)_0: 1724389863
-      Run (32x32)_1: 301925138
-      Run (32x32)_10: 1566618072
-      Run (32x32)_11: 134642968
-      Run (32x32)_2: -1438295415
-      Run (32x32)_3: -580884683
-      Run (32x32)_4: 383082052
-      Run (32x32)_5: -1655078547
-      Run (32x32)_6: 1415587315
-      Run (32x32)_7: 406499610
-      Run (32x32)_8: -860818379
-      Run (32x32)_9: -819499298
+      Idle (32x32) 1_0: -244555749
+      Idle (32x32) 1_1: -194318038
+      Idle (32x32) 1_10: 1712026308
+      Idle (32x32) 1_2: -1015666944
+      Idle (32x32) 1_3: 906687258
+      Idle (32x32) 1_4: -165089876
+      Idle (32x32) 1_5: -1577998359
+      Idle (32x32) 1_6: 2069522479
+      Idle (32x32) 1_7: 1409194619
+      Idle (32x32) 1_8: 148271842
+      Idle (32x32) 1_9: -285964919
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
