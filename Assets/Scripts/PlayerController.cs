@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float GravityForce;
     public float Speed;
     public float JumpSpeed;
-    public float JumpDuration;
     public int MaxJumps;
     
 
+    private Rigidbody2D rigidbody;
     private Animator animator;
+    private bool shouldJump;
     private bool isAirborne;
     private float jumpTimer;
     private int jumpCount;
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         isAirborne = true;
         jumpTimer = 0f;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(jumpCount);
         float horizontalAxis = Input.GetAxis("Horizontal");
         float horizontalTranslation = horizontalAxis * Speed * Time.deltaTime;
         animator.SetBool("Running", horizontalAxis != 0 && !isAirborne);
@@ -35,26 +37,26 @@ public class PlayerController : MonoBehaviour
 
         Look(horizontalAxis);
 
-        if (Input.GetButtonDown("Jump") && jumpCount < MaxJumps) {
-            jumpTimer = JumpDuration;
-            jumpCount += 1;
-        }
-        
-        float verticalTranslation = 0f;
-        bool isJumping = jumpTimer > 0;
-        if (isJumping) {
-            verticalTranslation = JumpSpeed * Time.deltaTime;
-            jumpTimer -= Time.deltaTime;
-        } else if (isAirborne) {
-            // Apply Gravity
-            verticalTranslation = -GravityForce * Time.deltaTime;
+        if (jumpCount < MaxJumps && Input.GetButtonDown("Jump")) {
+            shouldJump = true;
+            if (isAirborne) {
+                jumpCount += 1;
+            }
         }
 
-        animator.SetBool("Jumping", verticalTranslation > 0 && isAirborne);
         animator.SetInteger("Jump Count", jumpCount);
-        animator.SetBool("Falling", verticalTranslation < 0 && isAirborne);
+        animator.SetBool("Jumping", rigidbody.velocity.y > 0 && isAirborne);
+        animator.SetBool("Falling", rigidbody.velocity.y < 0 && isAirborne);
+    }
 
-        transform.Translate(horizontalTranslation, verticalTranslation, 0);
+    private void FixedUpdate() {
+        float horizontalAxis = Input.GetAxis("Horizontal");
+        rigidbody.velocity = new Vector2(horizontalAxis * Speed, rigidbody.velocity.y);
+        if (shouldJump) {
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+            rigidbody.AddForce(Vector2.up * JumpSpeed, ForceMode2D.Impulse);
+            shouldJump = false;
+        }
     }
 
     private void Look(float horizontalAxis) {
@@ -72,11 +74,18 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
         isAirborne = false;
         jumpCount = 0;
     }
 
-    private void OnCollisionExit2D(Collision2D other) {
+    private void OnTriggerExit2D(Collider2D other) {
         isAirborne = true;
+        jumpCount += 1;
     }
 }

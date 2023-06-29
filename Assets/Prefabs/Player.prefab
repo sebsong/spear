@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2762246711629878142}
   - component: {fileID: 1865334926970011570}
   - component: {fileID: 4291281559850622627}
+  - component: {fileID: 2121490111362827140}
   - component: {fileID: -6289015893702122821}
   - component: {fileID: 2088409601491376353}
   - component: {fileID: 8503931001802996541}
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1865334926970011570
 SpriteRenderer:
@@ -120,9 +121,44 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0049415827, y: -0.019766271}
-  m_Size: {x: 0.28046745, y: 0.32}
+  m_Offset: {x: 0, y: -0.03}
+  m_Size: {x: 0.25, y: 0.29}
   m_Direction: 0
+--- !u!58 &2121490111362827140
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944717559078669188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.09}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!50 &-6289015893702122821
 Rigidbody2D:
   serializedVersion: 4
@@ -162,10 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1f6dd086a5545339637e38750f589f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GravityForce: 3
   Speed: 3
   JumpSpeed: 4
-  JumpDuration: 0.3
   MaxJumps: 2
 --- !u!95 &8503931001802996541
 Animator:
