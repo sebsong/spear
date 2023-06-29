@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private bool shouldJump;
     private bool isAirborne;
-    private float jumpTimer;
     private int jumpCount;
 
     // Start is called before the first frame update
@@ -22,14 +21,12 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         isAirborne = true;
-        jumpTimer = 0f;
         jumpCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(jumpCount);
         float horizontalAxis = Input.GetAxis("Horizontal");
         float horizontalTranslation = horizontalAxis * Speed * Time.deltaTime;
         animator.SetBool("Running", horizontalAxis != 0 && !isAirborne);
