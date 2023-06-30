@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         animator.SetInteger("Jump Count", jumpCount);
         animator.SetBool("Jumping", rigidbody.velocity.y > 0 && isAirborne);
         animator.SetBool("Falling", rigidbody.velocity.y < 0 && isAirborne);
+        Debug.Log(jumpCount);
     }
 
     private void FixedUpdate() {
