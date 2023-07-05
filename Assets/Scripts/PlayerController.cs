@@ -29,31 +29,22 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalAxis = Input.GetAxis("Horizontal");
         float horizontalTranslation = horizontalAxis * Speed * Time.deltaTime;
-        animator.SetBool("Running", horizontalAxis != 0 && !isAirborne);
-        animator.SetBool("Idle", horizontalAxis == 0 && !isAirborne);
 
         Look(horizontalAxis);
+        JumpInput();
 
-        if (jumpCount < MaxJumps && Input.GetButtonDown("Jump")) {
-            shouldJump = true;
-            if (isAirborne) {
-                jumpCount += 1;
-            }
-        }
-
+        animator.SetBool("Running", horizontalAxis != 0 && !isAirborne);
+        animator.SetBool("Idle", horizontalAxis == 0 && !isAirborne);
         animator.SetInteger("Jump Count", jumpCount);
         animator.SetBool("Jumping", rigidbody.velocity.y > 0 && isAirborne);
         animator.SetBool("Falling", rigidbody.velocity.y < 0 && isAirborne);
-        Debug.Log(jumpCount);
     }
 
     private void FixedUpdate() {
-        float horizontalAxis = Input.GetAxis("Horizontal");
-        rigidbody.velocity = new Vector2(horizontalAxis * Speed, rigidbody.velocity.y);
+        Move();
+
         if (shouldJump) {
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
-            rigidbody.AddForce(Vector2.up * JumpSpeed, ForceMode2D.Impulse);
-            shouldJump = false;
+            Jump();
         }
     }
 
@@ -69,6 +60,26 @@ public class PlayerController : MonoBehaviour
             scale.x = -Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
+    }
+
+    private void JumpInput() {
+        if (jumpCount < MaxJumps && Input.GetButtonDown("Jump")) {
+            shouldJump = true;
+            if (isAirborne) {
+                jumpCount += 1;
+            }
+        }
+    }
+
+    private void Jump() {
+        rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+        rigidbody.AddForce(Vector2.up * JumpSpeed, ForceMode2D.Impulse);
+        shouldJump = false;
+    }
+
+    private void Move() {
+        float horizontalAxis = Input.GetAxis("Horizontal");
+        rigidbody.velocity = new Vector2(horizontalAxis * Speed, rigidbody.velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
