@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Jumping", rigidbody.velocity.y > 0 && isAirborne);
         animator.SetBool("Falling", rigidbody.velocity.y < 0 && isAirborne);
         if (Input.GetButtonDown("Control Ball") && !Ball.activeSelf) {
-            Debug.Log("THROW");
             shouldThrowBall = true;
         }
     }
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour
         }
 
         if (shouldThrowBall) {
-            Ball.SetActive(true);
             ThrowBall();
         }
     }
@@ -99,7 +97,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void ThrowBall() {
+        Ball.layer = Constants.IGNORE_LAYER;
         Ball.transform.position = transform.position;
+        Ball.SetActive(true);
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 throwForce = (mouseWorldPosition - transform.position).normalized * ThrowForce;
 
@@ -118,12 +118,24 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        isAirborne = false;
-        jumpCount = 0;
+        if (other.transform.parent && other.transform.parent.tag == "Reset Jump") {
+            isAirborne = false;
+            jumpCount = 0;
+        }
+
+        if (other.gameObject.tag == "Ball") {
+            ballController.FinishRecall();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        isAirborne = true;
-        jumpCount += 1;
+        if (other.transform.parent && other.transform.parent.tag == "Reset Jump") {
+            isAirborne = true;
+            jumpCount += 1;
+        }
+
+        if (other.gameObject.tag == "Ball") {
+            Ball.layer = Constants.BALL_LAYER;
+        }
     }
 }
