@@ -755,6 +755,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &766452508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7944717559078669188, guid: 8d23c0a1f1a5544d5b1c585295b24b66, type: 3}
+  m_PrefabInstance: {fileID: 1285400381}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &867643135
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,6 +986,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 9064652675620943239, guid: 4c4f8756e9fdf4c7db72e0c65c9f97a8, type: 3}
+      propertyPath: m_TagString
+      value: Ball
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1155,6 +1164,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2088409601491376353, guid: 8d23c0a1f1a5544d5b1c585295b24b66, type: 3}
+      propertyPath: Ball
+      value: 
+      objectReference: {fileID: 1384987529}
+    - target: {fileID: 2088409601491376353, guid: 8d23c0a1f1a5544d5b1c585295b24b66, type: 3}
+      propertyPath: ThrowForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2762246711629878142, guid: 8d23c0a1f1a5544d5b1c585295b24b66, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1225,8 +1242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41abafc00d7f4494897caf0ce53b73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Owner: {fileID: 7944717559078669188, guid: 8d23c0a1f1a5544d5b1c585295b24b66, type: 3}
-  MinRecallForce: 3
+  Owner: {fileID: 766452508}
+  MinRecallForce: 10
 --- !u!1001 &1494034661
 PrefabInstance:
   m_ObjectHideFlags: 0

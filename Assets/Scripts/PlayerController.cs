@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public float Speed;
     public float JumpSpeed;
     public int MaxJumps;
+    public GameObject Ball;
+    public float ThrowForce;
     
 
     private Rigidbody2D rigidbody;
@@ -15,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private bool isAirborne;
     private int jumpCount;
 
+    private BallController ballController;
+    private bool shouldThrowBall;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +27,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         isAirborne = true;
         jumpCount = 0;
+
+        ballController = Ball.GetComponent<BallController>();
     }
 
     // Update is called once per frame
@@ -38,6 +45,10 @@ public class PlayerController : MonoBehaviour
         animator.SetInteger("Jump Count", jumpCount);
         animator.SetBool("Jumping", rigidbody.velocity.y > 0 && isAirborne);
         animator.SetBool("Falling", rigidbody.velocity.y < 0 && isAirborne);
+        if (Input.GetButtonDown("Control Ball") && !Ball.activeSelf) {
+            Debug.Log("THROW");
+            shouldThrowBall = true;
+        }
     }
 
     private void FixedUpdate() {
@@ -45,6 +56,11 @@ public class PlayerController : MonoBehaviour
 
         if (shouldJump) {
             Jump();
+        }
+
+        if (shouldThrowBall) {
+            Ball.SetActive(true);
+            ThrowBall();
         }
     }
 
@@ -82,7 +98,20 @@ public class PlayerController : MonoBehaviour
         rigidbody.velocity = new Vector2(horizontalAxis * Speed, rigidbody.velocity.y);
     }
 
+    private void ThrowBall() {
+        Ball.transform.position = transform.position;
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 throwForce = (mouseWorldPosition - transform.position).normalized * ThrowForce;
+
+        ballController.Launch(throwForce);
+        shouldThrowBall = false;
+    }
+
     private void OnCollisionEnter2D(Collision2D other) {
+        // if (other.gameObject.tag == "Ball") {
+
+        //     rigidbody.AddForce(other.gameObject.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
+        // }
     }
 
     private void OnCollisionExit2D(Collision2D other) {
@@ -98,5 +127,3 @@ public class PlayerController : MonoBehaviour
         jumpCount += 1;
     }
 }
-
-
