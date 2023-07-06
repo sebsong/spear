@@ -98,3 +98,5 @@ public class PlayerController : MonoBehaviour
         jumpCount += 1;
     }
 }
+
+
