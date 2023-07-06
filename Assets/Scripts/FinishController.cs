@@ -18,7 +18,9 @@ public class FinishController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        if (other.tag == "Player") {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex + 1);
+        }
     }
 }

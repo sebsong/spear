@@ -101,9 +101,9 @@ public class PlayerController : MonoBehaviour
         Ball.transform.position = transform.position;
         Ball.SetActive(true);
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 throwForce = (mouseWorldPosition - transform.position).normalized * ThrowForce;
-
-        ballController.Launch(throwForce);
+        Vector2 throwDir = mouseWorldPosition - transform.position;
+        throwDir.Normalize();
+        ballController.Launch(throwDir * ThrowForce);
         shouldThrowBall = false;
     }
 

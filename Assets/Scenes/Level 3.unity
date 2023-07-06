@@ -1165,6 +1165,10 @@ PrefabInstance:
       propertyPath: Ball
       value: 
       objectReference: {fileID: 1384987529}
+    - target: {fileID: 2088409601491376353, guid: 8d23c0a1f1a5544d5b1c585295b24b66, type: 3}
+      propertyPath: ThrowForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2762246711629878142, guid: 8d23c0a1f1a5544d5b1c585295b24b66, type: 3}
       propertyPath: m_RootOrder
       value: 4

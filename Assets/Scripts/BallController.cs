@@ -32,6 +32,7 @@ public class BallController : MonoBehaviour
 
     public void Launch(Vector2 launchForce) {
         rigidbody.isKinematic = false;
+        rigidbody.velocity = Vector2.zero;
         rigidbody.AddForce(launchForce, ForceMode2D.Impulse);
     }
 
