@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public int MaxJumps;
     public GameObject Ball;
     public float ThrowForce;
+    public float LaunchForce;
     
 
     private Rigidbody2D rigidbody;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private BallController ballController;
     private bool shouldThrowBall;
+    private bool launching;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour
         jumpCount = 0;
 
         ballController = Ball.GetComponent<BallController>();
+        shouldThrowBall = false;
+        launching = false;
     }
 
     // Update is called once per frame
@@ -51,7 +55,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        Move();
+        if (!launching) {
+            Move();
+        }
 
         if (shouldJump) {
             Jump();
@@ -89,6 +95,7 @@ public class PlayerController : MonoBehaviour
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
         rigidbody.AddForce(Vector2.up * JumpSpeed, ForceMode2D.Impulse);
         shouldJump = false;
+        launching = false;
     }
 
     private void Move() {
@@ -107,7 +114,17 @@ public class PlayerController : MonoBehaviour
         shouldThrowBall = false;
     }
 
+    private void Launch() {
+        launching = true;
+        Vector2 launchDir = transform.position - Ball.transform.position;
+        launchDir.Normalize();
+        
+        rigidbody.velocity = Vector2.zero;
+        rigidbody.AddForce(launchDir * LaunchForce, ForceMode2D.Impulse);
+    }
+
     private void OnCollisionEnter2D(Collision2D other) {
+        launching = false;
         // if (other.gameObject.tag == "Ball") {
 
         //     rigidbody.AddForce(other.gameObject.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
@@ -123,8 +140,9 @@ public class PlayerController : MonoBehaviour
             jumpCount = 0;
         }
 
-        if (other.gameObject.tag == "Ball") {
+        if (other.gameObject.tag == "Ball" && ballController.inRecall) {
             ballController.FinishRecall();
+            Launch();
         }
     }
 

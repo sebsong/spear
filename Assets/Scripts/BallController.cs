@@ -6,9 +6,9 @@ public class BallController : MonoBehaviour
 {
     public GameObject Owner;
     public float MinRecallForce;
+    public bool inRecall;
 
     private Rigidbody2D rigidbody;
-    private bool inRecall;
 
     // Start is called before the first frame update
     void Start()
