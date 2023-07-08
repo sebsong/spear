@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private int jumpCount;
 
     private BallController ballController;
+    private bool canThrowBall;
     private bool shouldThrowBall;
     private bool launching;
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         jumpCount = 0;
 
         ballController = Ball.GetComponent<BallController>();
+        canThrowBall = true;
         shouldThrowBall = false;
         launching = false;
     }
@@ -49,7 +51,8 @@ public class PlayerController : MonoBehaviour
         animator.SetInteger("Jump Count", jumpCount);
         animator.SetBool("Jumping", rigidbody.velocity.y > 0 && isAirborne);
         animator.SetBool("Falling", rigidbody.velocity.y < 0 && isAirborne);
-        if (Input.GetButtonDown("Control Ball") && !Ball.activeSelf) {
+
+        if (Input.GetButtonDown("Control Ball") && !Ball.activeSelf && (canThrowBall || !isAirborne)) {
             shouldThrowBall = true;
         }
     }
@@ -104,6 +107,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void ThrowBall() {
+        canThrowBall = false;
         Ball.layer = Constants.IGNORE_LAYER;
         Ball.transform.position = transform.position;
         Ball.SetActive(true);
@@ -138,6 +142,7 @@ public class PlayerController : MonoBehaviour
         if (other.transform.parent && other.transform.parent.tag == "Reset Jump") {
             isAirborne = false;
             jumpCount = 0;
+            canThrowBall = true;
         }
 
         if (other.gameObject.tag == "Ball" && ballController.inRecall) {
