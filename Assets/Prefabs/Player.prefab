@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2088409601491376353}
   - component: {fileID: 8503931001802996541}
   - component: {fileID: 7205963422296775783}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1865334926970011570
 SpriteRenderer:
@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -343315451
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -244555749, guid: ee062bd7f59ea4b92a17137bfc6a0b1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,7 +105,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -213,7 +213,8 @@ MonoBehaviour:
   JumpSpeed: 5
   MaxJumps: 2
   Ball: {fileID: 0}
-  ThrowForce: 10
+  ThrowForce: 5
+  LaunchForce: 8
 --- !u!95 &8503931001802996541
 Animator:
   serializedVersion: 5
