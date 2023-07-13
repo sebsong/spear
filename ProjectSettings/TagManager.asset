@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Reset Jump
   - Ball
+  - Teleport Node
   layers:
   - Default
   - TransparentFX

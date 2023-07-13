@@ -57,5 +57,9 @@ public class BallController : MonoBehaviour
             // Rigidbody2D playerRididBody = other.gameObject.GetComponent<Rigidbody2D>();
             // playerRididBody.AddForce(launchForce, ForceMode2D.Impulse);
         }
+
+        if (other.gameObject.tag == "Teleport Node") {
+            Recall();
+        }
     }
 }
