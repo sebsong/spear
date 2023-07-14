@@ -58,9 +58,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if (!launching) {
-            Move();
-        }
+        Move();
 
         if (shouldJump) {
             Jump();
@@ -131,21 +129,15 @@ public class PlayerController : MonoBehaviour
         shouldThrowBall = false;
     }
 
-    private void Launch(Vector2 force) {
+    public void Launch(Vector2 force) {
+        isAirborne = true;
         launching = true;
-        Vector2 launchDir = transform.position - Ball.transform.position;
-        launchDir.Normalize();
-        
         rigidbody.velocity = Vector2.zero;
-        rigidbody.AddForce(launchDir * LaunchForce, ForceMode2D.Impulse);
+        rigidbody.AddForce(force, ForceMode2D.Impulse);
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         launching = false;
-        // if (other.gameObject.tag == "Ball") {
-
-        //     rigidbody.AddForce(other.gameObject.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
-        // }
     }
 
     private void OnCollisionExit2D(Collision2D other) {
@@ -160,7 +152,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.tag == "Ball" && ballController.inRecall) {
             ballController.FinishRecall();
-            // Launch();
         }
     }
 

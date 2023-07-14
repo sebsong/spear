@@ -43,7 +43,7 @@ public class BallController : MonoBehaviour
         }
     }
 
-    private void Recall() {
+    public void Recall() {
         gameObject.layer = Constants.IGNORE_LAYER;
         inRecall = true;
         rigidbody.isKinematic = true;
@@ -51,15 +51,5 @@ public class BallController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Player" && inRecall) {
-            // rigidbody.isKinematic = false;
-            // Vector2 launchForce = (Owner.transform.position - transform.position).normalized * MinRecallForce;
-            // Rigidbody2D playerRididBody = other.gameObject.GetComponent<Rigidbody2D>();
-            // playerRididBody.AddForce(launchForce, ForceMode2D.Impulse);
-        }
-
-        if (other.gameObject.tag == "Teleport Node") {
-            Recall();
-        }
     }
 }
