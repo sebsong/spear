@@ -101,8 +101,21 @@ public class PlayerController : MonoBehaviour
         launching = false;
     }
 
+    private bool isSameDirection(float velocity, float otherVelocity) {
+        return velocity < 0 == otherVelocity < 0;
+    }
+
     private void Move() {
         float horizontalAxis = Input.GetAxis("Horizontal");
+        float newVelocityX = horizontalAxis * Speed;
+
+        if (isAirborne) {
+            if (newVelocityX == 0 || (isSameDirection(newVelocityX, rigidbody.velocity.x)) && Mathf.Abs(newVelocityX) < Mathf.Abs(rigidbody.velocity.x)) {
+                // don't affect the velocity if trying to move in the same direction but just more slowly
+                return;
+            }
+        }
+
         rigidbody.velocity = new Vector2(horizontalAxis * Speed, rigidbody.velocity.y);
     }
 
@@ -118,7 +131,7 @@ public class PlayerController : MonoBehaviour
         shouldThrowBall = false;
     }
 
-    private void Launch() {
+    private void Launch(Vector2 force) {
         launching = true;
         Vector2 launchDir = transform.position - Ball.transform.position;
         launchDir.Normalize();
