@@ -22,12 +22,12 @@ public class TeleportNodeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Ball") {
+            BallController ballController = other.gameObject.GetComponent<BallController>();
+
+            Vector2 dir = ballController.GetMovementDir();
             Player.transform.position = transform.position;
-            Vector2 dir = other.gameObject.GetComponent<Rigidbody2D>().velocity;
-            dir.Normalize();
             playerController.Launch(dir * LaunchForce);
 
-            BallController ballController = other.gameObject.GetComponent<BallController>();
             ballController.Recall();
         }
         

@@ -50,6 +50,13 @@ public class BallController : MonoBehaviour
         rigidbody.velocity = Vector2.zero;
     }
 
+    public Vector2 GetMovementDir() {
+        if (inRecall) {
+            return ((Vector2) (Owner.transform.position - transform.position)).normalized;
+        }
+        return rigidbody.velocity.normalized;
+    }
+
     private void OnCollisionEnter2D(Collision2D other) {
     }
 }
